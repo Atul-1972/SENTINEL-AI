@@ -2,6 +2,8 @@
 
 Repository: [Atul-1972/SENTINEL-AI](https://github.com/Atul-1972/SENTINEL-AI).
 
+**Completion verified on 18 November 2026:** [run #1 passed](https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898) for commit `f873de9c58b7723a38c309b19110b52f96cf1412`. All three jobs completed successfully. The repository contains the code and workflow; the real dataset, trained models and SQLite history remain local.
+
 The workflow is [`.github/workflows/ci.yml`](../.github/workflows/ci.yml). It runs on pushes, pull requests and manual dispatch. It uses read-only repository permissions, job timeouts and cancellation of older runs on the same branch. No cloud deployment, registry publishing, full-dataset download or model training is performed.
 
 ## What runs
@@ -29,7 +31,7 @@ The Dockerfile is unchanged. The CI image has no deployable model bundle, so `/h
 3. Confirm all three jobs are green. Open a job to inspect its commands and results.
 4. Download `backend-test-results`, `frontend-build`, or `docker-check-results` from the run's Artifacts section when needed.
 
-A workflow file or passing local tests alone do not prove a successful remote run. Phase 4's completion criterion is a real successful run on GitHub. Any confirmed run URL and commit are recorded in `reports/phase4_github_verification.json` when verification finishes.
+A workflow file or passing local tests alone do not prove a successful remote run. Phase 4's completion criterion is a real successful run on GitHub. The first successful run URL, commit and job results are recorded in [reports/phase4_github_verification.json](../reports/phase4_github_verification.json). This report is a fixed verification snapshot; later commits have their own runs on the Actions page.
 
 For later edits, use a topic branch from the project root:
 

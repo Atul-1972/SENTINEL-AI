@@ -1,12 +1,14 @@
 # SENTINEL AI
 
+[![SENTINEL AI CI](https://github.com/Atul-1972/SENTINEL-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Atul-1972/SENTINEL-AI/actions/workflows/ci.yml)
+
 An educational intrusion detection project for a third-year B.Tech student.
 The application classifies recorded network flows and displays predictions in a local dashboard.
 It is a dataset-based prototype, not a production network protection system.
 
 ## Current progress
 
-**GitHub and CI are configured for [Atul-1972/SENTINEL-AI](https://github.com/Atul-1972/SENTINEL-AI).** The workflow checks backend/API tests, the frontend build and an isolated Docker startup check on pushes and pull requests. See [Actions](https://github.com/Atul-1972/SENTINEL-AI/actions/workflows/ci.yml) for the actual remote result and [docs/phase4_github_ci.md](docs/phase4_github_ci.md) for the guide. Local checks passed: 30 backend tests, 18 frontend tests, production build and artifact-free Docker smoke check. Remote completion is recorded separately after the first run is verified.
+**Phase 4 is complete: code is pushed to [Atul-1972/SENTINEL-AI](https://github.com/Atul-1972/SENTINEL-AI), and [the first GitHub Actions run passed all three jobs](https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898).** CI checks backend/API tests, the frontend build and an isolated Docker startup check on pushes and pull requests. See [Actions](https://github.com/Atul-1972/SENTINEL-AI/actions/workflows/ci.yml) for the latest result and [docs/phase4_github_ci.md](docs/phase4_github_ci.md) for the guide. Remote evidence is saved in [reports/phase4_github_verification.json](reports/phase4_github_verification.json). Local checks also passed: 30 backend tests, 18 frontend tests, production build and artifact-free Docker smoke check.
 
 **The frontend is complete: five responsive React pages connect to the verified Docker API and persistent SQLite history.**
 

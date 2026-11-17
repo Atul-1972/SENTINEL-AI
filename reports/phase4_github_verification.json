@@ -1,0 +1,32 @@
+{
+  "repository": "Atul-1972/SENTINEL-AI",
+  "run_id": 44149374898,
+  "head_sha": "f873de9c58b7723a38c309b19110b52f96cf1412",
+  "run_number": 1,
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898",
+  "jobs": [
+    {
+      "name": "Frontend tests and production build",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898/job/134273148847",
+      "failed_steps": []
+    },
+    {
+      "name": "Backend tests and source checks",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898/job/134273149545",
+      "failed_steps": []
+    },
+    {
+      "name": "Docker build and startup check (no trained models)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898/job/134273630161",
+      "failed_steps": []
+    }
+  ]
+}

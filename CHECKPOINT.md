@@ -4,9 +4,9 @@ Updated: 18 November 2026 (Asia/Calcutta).
 
 ## Current state and user instructions
 
-**Phases 1-3 and the requested frontend are complete. The user explicitly requested the frontend before the remaining GitHub/CI and MLOps work. Docker serves the API at localhost:8001 with persistent history.**
+**Phases 1-4 and the requested frontend are complete. The user explicitly requested the frontend before GitHub/CI. Docker serves the API at localhost:8001 with persistent history. GitHub Actions passed all three jobs remotely. External MLOps integrations remain pending.**
 
-Latest authorized work: Phase 4 GitHub and CI. User supplied https://github.com/Atul-1972/SENTINEL-AI. The empty remote was inspected; local Git main initialized and origin connected. CI code and local checks are ready; do not claim Phase 4 complete until a remote run succeeds. See the Phase 4 section below and any verification report for the latest confirmed result.
+Latest authorized work: Phase 4 GitHub and CI, now complete. User supplied https://github.com/Atul-1972/SENTINEL-AI. The empty remote was inspected; local Git main initialized, origin connected, and code pushed. Run #1 completed successfully: https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898. Evidence is saved in reports/phase4_github_verification.json. See the Phase 4 section below.
 
 - Medium-level B.Tech CSE third-year project. Keep the code understandable and the final demonstration local.
 - Initial real-data training ran in Google Colab, as requested. Do not retrain or repeat final test prediction.
@@ -120,7 +120,7 @@ Real Phase 1 completion is supported by the Colab results plus the downloaded bu
 ## Next action
 
 The frontend is ready to try: start the Docker API, then run `npm run dev` inside frontend and open http://127.0.0.1:5173. See docs/frontend.md. The frontend QA servers were temporary and should be restarted in the user's terminal for normal use.
-The user has now authorized GitHub/CI. Finish that phase and verify its actual remote run. The dashboard was explicitly requested out of the original phase order and is complete. External MLOps services still require a later phase request.
+GitHub/CI is complete and its actual remote run is verified. The dashboard was explicitly requested out of the original phase order and is also complete. Wait for the next user request; external MLOps services are not part of Phase 4. Continue with the local application/demo or Phase 5 only when requested.
 Continue using .venv-model/ and native model.ubj for XGBoost. No retraining or final test prediction
 is needed for backend/Docker checks.
 
@@ -259,8 +259,8 @@ Docker HTTP check (adds 11 historical predictions per run):
 .\.venv-model\Scripts\python.exe scripts\api_smoke_test.py --base-url http://127.0.0.1:8001 --report reports/phase3_api_smoke.json
 ```
 
-Wait for user confirmation before Phase 4. No GitHub repository, published image or successful
-GitHub Actions run exists yet. Artifacts are intentionally ignored by Git: Phase 4's Docker build
+At Phase 3 completion, Phase 4 had not been requested and no GitHub repository or successful
+GitHub Actions run was linked. Phase 4 is now completed as recorded below. Artifacts are intentionally ignored by Git: the Docker build
 in CI must prepare small clearly labeled fixtures or another explicit no-real-artifact build context,
 not assume real exported models are committed and not download/train the full CIC dataset.
 
@@ -282,9 +282,9 @@ Evidence: reports/frontend-verification.json, frontend-production-preview.json, 
 
 Runtime: Node 22.12.0; React/ReactDOM 19.3.1; Vite 8.3.8; plugin-react 6.3.0; Tailwind and its Vite plugin 4.3.5; Recharts 3.11.0; PapaParse 5.7.1; Lucide 0.468.0; Playwright 1.65.1. Use npm ci to reproduce the lockfile. The production dependency audit has zero vulnerabilities. Full audit has five high findings from the unpatched picomatch <=4.0.7 development/build dependency chain (GHSA-fc5q-39xc-vjpf); no patched release was available. This is documented rather than claimed fixed; Vite binds to loopback. No user CSV content is used as a glob expression.
 
-Pending: MLflow, Evidently, Airflow, DVC, GitHub Actions and automated retraining. Do not claim these exist because a Monitoring page exists. No retraining, test reevaluation, cloud hosting or GitHub publication was performed.
+At frontend completion, MLflow, Evidently, Airflow, DVC, GitHub Actions and automated retraining were pending. GitHub/CI was subsequently completed below; the other integrations remain pending. Do not claim live integrations because a Monitoring page exists. No retraining, test reevaluation or cloud hosting was performed.
 
-## Phase 4 GitHub and CI preparation
+## Phase 4 GitHub and CI implementation and completion
 
 User requested GitHub and CI and supplied Atul-1972/SENTINEL-AI. git ls-remote confirmed the repository had no branches. Git Credential Manager has the matching Atul-1972 account. The GitHub plugin was discovered but is not connected; existing Git/GCM is the working route. No tokens are printed or saved. An exact-path safe.directory entry was needed for the user account because the sandbox created .git under its own Windows identity; no wildcard trust entry was added.
 
@@ -294,4 +294,6 @@ Workflow triggers: push, pull_request, workflow_dispatch; contents:read only; ch
 
 Local verification: complete backend suite 30 passed (same upstream Starlette/httpx warning); fixture-only selection is 28 tests with two real-model checks excluded. Frontend 18 passed and production build passed. Artifact-free image sentinel-ai-api:ci-check built; context about 88 kB, no real model/data copied. Separate sentinel-ci-local-check container at 18001 passed scripts/ci_container_smoke.py and was removed. Main demo API/image/database remained untouched. Report: reports/phase4_local_container_check.json.
 
-Remaining at preparation: stage/review source files, repository guard, first commit, push to origin/main and verify actual Actions success. Record the commit/run URL/jobs in reports/phase4_github_verification.json. Do not claim local checks equal a remote green run. No MLflow/DVC/Airflow/Evidently/retraining is authorized in this phase.
+Completion: 98 reviewed source/report/example files passed the repository guard and were committed/pushed to origin/main. First code commit: f873de9c58b7723a38c309b19110b52f96cf1412. GitHub Actions run 44149374898 (run number 1) completed with conclusion success; Backend tests and source checks, Frontend tests and production build, and Docker build and startup check all succeeded. Run URL: https://github.com/Atul-1972/SENTINEL-AI/actions/runs/44149374898. Exact API evidence: reports/phase4_github_verification.json. The supplied repository was used directly through Git/GCM; no new repository or plugin installation was needed. No image was pushed to a registry.
+
+The README now includes the actual workflow badge and completion evidence. docs/phase4_github_ci.md explains workflow stages, fixed-report versus latest-run status, clean-clone limitations, and branch/push commands. Final documentation is a subsequent commit with its own automatic run; the committed verification JSON remains the first successful run's fixed snapshot. No MLflow/DVC/Airflow/Evidently/retraining is authorized in this phase.
