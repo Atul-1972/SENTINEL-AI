@@ -1,0 +1,37 @@
+{
+  "evaluation_split": "validation",
+  "quality_gate": {
+    "min_attack_recall": 0.98,
+    "min_attack_f1": 0.98,
+    "max_false_positive_rate": 0.01
+  },
+  "ranking": "Among passing candidates: recall descending, FPR ascending, F1 descending, size ascending, latency ascending.",
+  "candidates": [
+    {
+      "candidate": "random_forest",
+      "accuracy": 0.9985,
+      "attack_precision": 0.9995635093845482,
+      "attack_recall": 0.9978213507625272,
+      "attack_f1": 0.9986916703009159,
+      "false_positive_rate": 0.0005865102639296188,
+      "roc_auc": 0.9999913109590529,
+      "model_bytes": 124398,
+      "validation_batch_ms_per_flow": 0.013340111250045084,
+      "passes_quality_gate": true
+    },
+    {
+      "candidate": "xgboost",
+      "accuracy": 0.99925,
+      "attack_precision": 1.0,
+      "attack_recall": 0.9986928104575163,
+      "attack_f1": 0.999345977763244,
+      "false_positive_rate": 0.0,
+      "roc_auc": 0.9999971888396936,
+      "model_bytes": 27850,
+      "validation_batch_ms_per_flow": 0.005113197999889962,
+      "passes_quality_gate": true
+    }
+  ],
+  "recommended_candidate": "xgboost",
+  "status": "Recommendation only; final test evaluation and promotion have not run."
+}

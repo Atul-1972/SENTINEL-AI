@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "base_url": "http://127.0.0.1:8001",
+  "http_checks": {
+    "/": 200,
+    "/health": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "/model-info": 200,
+    "/predict-batch": 200,
+    "/predict": 200,
+    "/stats": 200,
+    "/alerts": 200
+  },
+  "batch_flows_verified_against_colab": 10,
+  "single_prediction_verified": true,
+  "invalid_batch_status": 422,
+  "invalid_batch_wrote_no_records": true,
+  "expected_alerts_present": true,
+  "flows_before": 0,
+  "flows_after": 11,
+  "source": "Historical validation demo flows; no network attack was generated."
+}

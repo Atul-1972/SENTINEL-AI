@@ -1,0 +1,63 @@
+{
+  "model": "XGBClassifier",
+  "candidate_version": "xgb-baseline-001",
+  "evaluation_split": "validation",
+  "training_rows": 12000,
+  "validation_rows": 4000,
+  "input_feature_count": 78,
+  "selected_feature_count": 66,
+  "accuracy": 0.99925,
+  "attack_precision": 1.0,
+  "attack_recall": 0.9986928104575163,
+  "attack_f1": 0.999345977763244,
+  "false_positive_rate": 0.0,
+  "roc_auc": 0.9999971888396936,
+  "confusion_matrix": [
+    [
+      1705,
+      0
+    ],
+    [
+      3,
+      2292
+    ]
+  ],
+  "confusion_matrix_order": [
+    "BENIGN",
+    "ATTACK"
+  ],
+  "training_seconds": 0.6906304210006056,
+  "training_time_note": "Classifier fit only; preprocessing was reused from Random Forest.",
+  "validation_batch_ms_per_flow": 0.005113197999889962,
+  "latency_note": "Amortized batch time including preprocessing; not single-request API latency.",
+  "probability_note": "XGBoost probabilities are not calibrated confidence scores.",
+  "classification_report": {
+    "BENIGN": {
+      "precision": 0.9982435597189696,
+      "recall": 1.0,
+      "f1-score": 0.9991210079109288,
+      "support": 1705.0
+    },
+    "ATTACK": {
+      "precision": 1.0,
+      "recall": 0.9986928104575163,
+      "f1-score": 0.999345977763244,
+      "support": 2295.0
+    },
+    "accuracy": 0.99925,
+    "macro avg": {
+      "precision": 0.9991217798594848,
+      "recall": 0.9993464052287582,
+      "f1-score": 0.9992334928370864,
+      "support": 4000.0
+    },
+    "weighted avg": {
+      "precision": 0.9992513173302108,
+      "recall": 0.99925,
+      "f1-score": 0.9992500843636947,
+      "support": 4000.0
+    }
+  },
+  "model_bytes": 27850,
+  "native_model_bytes": 144079
+}

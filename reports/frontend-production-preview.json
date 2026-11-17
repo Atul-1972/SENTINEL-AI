@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "production_url": "http://127.0.0.1:4173",
+  "checks": [
+    {
+      "page": "overview",
+      "width": 1440,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "detection",
+      "width": 1440,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "threats",
+      "width": 1440,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "performance",
+      "width": 1440,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "monitoring",
+      "width": 1440,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "overview",
+      "width": 390,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "detection",
+      "width": 390,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "threats",
+      "width": 390,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "performance",
+      "width": 390,
+      "connected": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "page": "monitoring",
+      "width": 390,
+      "connected": true,
+      "no_horizontal_overflow": true
+    }
+  ],
+  "page_errors": []
+}

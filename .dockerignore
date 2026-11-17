@@ -1,0 +1,20 @@
+# Allow only inference code, pinned dependencies, exported models and small demo inputs.
+# Local runtimes, training data, SQLite files, ZIPs and notebooks stay out of the image.
+**
+!Dockerfile
+!.dockerignore
+!requirements-model.txt
+!backend/
+!backend/*.py
+!backend/requirements*.txt
+!artifacts/
+!artifacts/*.json
+!artifacts/*.joblib
+!artifacts/model.ubj
+!reports/
+!reports/inference_smoke_test.json
+!reports/model_comparison.json
+!data/
+!data/sample/
+!data/sample/api_request.json
+!data/sample/api_batch_request.json

@@ -1,0 +1,44 @@
+{
+  "model": "IsolationForest",
+  "candidate_version": "if-baseline-001",
+  "evaluation_split": "validation",
+  "training_reference": "BENIGN records from the training split only",
+  "training_reference_rows": 5115,
+  "validation_rows": 4000,
+  "selected_classifier": "xgboost",
+  "contamination": 0.05,
+  "threshold_note": "5% is a training reference cutoff setting, not the live attack probability or guaranteed validation false-positive rate.",
+  "anomaly_score_definition": "-decision_function; higher is more unusual; > 0 flags an anomaly",
+  "score_is_probability": false,
+  "predicts_attack_category": false,
+  "validation_anomaly_count": 461,
+  "validation_anomaly_fraction": 0.11525,
+  "training_seconds": 0.33288013099991076,
+  "diagnostics_against_known_binary_labels": {
+    "note": "Compare anomaly flags with known validation labels for diagnosis only; these flags do not assign attack categories.",
+    "precision": 0.7960954446854663,
+    "attack_recall": 0.1599128540305011,
+    "f1": 0.2663280116110305,
+    "benign_false_positive_rate": 0.05513196480938416,
+    "roc_auc": 0.7428199771273774,
+    "confusion_matrix": [
+      [
+        1611,
+        94
+      ],
+      [
+        1928,
+        367
+      ]
+    ],
+    "matrix_true_rows": [
+      "BENIGN",
+      "ATTACK"
+    ],
+    "matrix_predicted_columns": [
+      "NORMAL_FLAG",
+      "ANOMALY_FLAG"
+    ]
+  },
+  "model_bytes": 229254
+}

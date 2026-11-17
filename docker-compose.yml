@@ -1,0 +1,16 @@
+name: sentinel-ai
+
+services:
+  api:
+    image: sentinel-ai-api:phase3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:${SENTINEL_API_PORT:-8001}:8000"
+    volumes:
+      - api-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  api-data:

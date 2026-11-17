@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "scope": "Local React dashboard integrated with Docker FastAPI; no external publication.",
+  "pages": [
+    "Security overview",
+    "Intrusion detection",
+    "Threat analysis",
+    "Model performance",
+    "MLOps monitoring"
+  ],
+  "frontend_unit_tests_passed": 18,
+  "browser_tests_passed": 5,
+  "backend_tests_passed": 28,
+  "production_build_passed": true,
+  "production_preview_checked_at_widths": [
+    1440,
+    390
+  ],
+  "real_csv_workflow_verified": true,
+  "stop_resume_chunking_verified_with_test_only_fixture": true,
+  "csv_max_rows": 20000,
+  "api_batch_max_rows": 1000,
+  "raw_file_limit_mb": 25,
+  "backend_history_flows_at_verification": 51,
+  "backend_source_distribution": {
+    "historical": 51
+  },
+  "screenshots": [
+    "reports/frontend-overview.png",
+    "reports/frontend-detection.png",
+    "reports/frontend-mobile.png",
+    "reports/frontend-performance.png",
+    "reports/frontend-monitoring.png"
+  ],
+  "production_dependency_audit": {
+    "total": 0
+  },
+  "development_dependency_audit": {
+    "high": 5,
+    "root_advisory": "GHSA-fc5q-39xc-vjpf",
+    "package": "picomatch <=4.0.7",
+    "patched_release_available": false,
+    "scope": "Development/build tool dependency chain; not in the production dependency audit. Dev server binds only to loopback."
+  },
+  "unimplemented_integrations": [
+    "MLflow tracking",
+    "Evidently drift monitoring",
+    "Airflow orchestration",
+    "DVC status",
+    "GitHub Actions CI",
+    "Automated retraining"
+  ],
+  "node": "v22.12.0",
+  "packages": {
+    "lucide-react": "0.468.0",
+    "papaparse": "5.7.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "recharts": "3.11.0",
+    "@playwright/test": "1.65.1",
+    "@tailwindcss/vite": "4.3.5",
+    "@vitejs/plugin-react": "6.3.0",
+    "tailwindcss": "4.3.5",
+    "vite": "8.3.8"
+  }
+}

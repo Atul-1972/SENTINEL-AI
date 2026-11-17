@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "mode": "artifact_free_ci_packaging_check",
+  "model_ready": false,
+  "database_ready": true,
+  "inference_tested": false,
+  "checks": [
+    "docs_and_routes",
+    "sqlite_ready",
+    "empty_history",
+    "missing_model_503",
+    "failed_requests_write_nothing"
+  ],
+  "note": "Mock-model endpoint tests run separately in pytest. Real trained-model checks are local only."
+}

@@ -1,0 +1,23 @@
+{
+  "selected_candidate": "xgboost",
+  "quality_gate": {
+    "min_attack_recall": 0.98,
+    "min_attack_f1": 0.98,
+    "max_false_positive_rate": 0.01
+  },
+  "comparison_sha256": "0a9cce0bb42127df41123afa8f4112117e2e83bf661e09c6ca1aa9f649d5d1b0",
+  "artifact_sha256": {
+    "artifacts/candidates/xgboost/model.joblib": "184e8013321bb25bf20850b695b7a9882cc9e634d8ed1eceefd31e98344a4945",
+    "artifacts/candidates/xgboost/preprocessor.joblib": "d94a59146020a705a9227414a6ae350837d3c26470c33c1a83a5039f859ce435",
+    "artifacts/candidates/xgboost/feature_schema.json": "6f8ec953345a6305dc1377f99b4072aeae1a7e16a333c59cc784b1640b8323f3",
+    "artifacts/candidates/xgboost/model_params.json": "249c41a7bf7948b4f086d9a56ea0d9ca8ae72f2ef0187bd43bc83c5b00a3aba4",
+    "artifacts/candidates/xgboost/label_mapping.json": "d93e63bd9fccb6f223bf826c01d20c312c072690ca2b54488435d7c8e9f89712",
+    "artifacts/candidates/xgboost/evaluation_metrics.json": "106f70fd3f052f4aa005105dee0cf6df38c2acbc1dde6fabe370c1b07f2fd58e",
+    "artifacts/candidates/isolation_forest/anomaly_model.joblib": "0f6b837d29e21e77f4edb5c350f28f1e641b4b8564b2a57ddea94b5f0f1a1a60",
+    "artifacts/candidates/isolation_forest/preprocessor.joblib": "d94a59146020a705a9227414a6ae350837d3c26470c33c1a83a5039f859ce435",
+    "artifacts/candidates/isolation_forest/model_params.json": "d46373f5f8f5c996b56836649ae0dbddef27e183e046d5d6e56a571941b812a2",
+    "artifacts/candidates/isolation_forest/evaluation_metrics.json": "d7c5530a400ba5464b84ff68985d41c92b52a4c3a31044f3e4beb8529922992a",
+    "preparation_report.json": "4b088b16ac190fb9bc804e1635827cf09a719c9f82eef483e47a3e50c9713e8d",
+    "artifacts/candidates/xgboost/model.ubj": "79ac255f348332d8dc03810e500b2470e70abc12c211e41f5c1ff9317c5b1c1c"
+  }
+}

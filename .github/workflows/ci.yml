@@ -1,0 +1,115 @@
+name: SENTINEL AI CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend tests and source checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: |
+            requirements-model.txt
+            requirements-test.txt
+            backend/requirements-api.txt
+      - name: Check tracked source and Python syntax
+        run: |
+          python scripts/check_repository.py
+          python -m compileall -q backend scripts tests notebooks
+      - name: Install CPU model libraries and API test dependencies
+        run: |
+          sed 's/^xgboost==/xgboost-cpu==/' requirements-model.txt > /tmp/model-requirements-ci.txt
+          python -m pip install -r /tmp/model-requirements-ci.txt -r backend/requirements-api.txt -r requirements-test.txt
+          python -m pip check
+      - name: Test API contracts, persistence, validation and CI preparation
+        run: python -m pytest -q -m "not artifacts" --junitxml=.ci-output/backend-tests.xml
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: backend-test-results
+          path: .ci-output/backend-tests.xml
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: warn
+
+  frontend:
+    name: Frontend tests and production build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.12.0'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+      - uses: actions/upload-artifact@v7
+        with:
+          name: frontend-build
+          path: frontend/dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  docker:
+    name: Docker build and startup check (no trained models)
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Prepare isolated artifact-free build context
+        run: python scripts/prepare_ci_context.py .ci-context
+      - name: Build the normal Dockerfile without private artifacts
+        run: docker build --tag sentinel-ai-api:ci-check .ci-context
+      - name: Check startup, storage, docs and honest missing-model responses
+        run: |
+          docker run -d --name sentinel-ci --no-healthcheck -p 127.0.0.1:18001:8000 sentinel-ai-api:ci-check
+          python scripts/ci_container_smoke.py --report .ci-output/container-smoke.json
+      - name: Collect logs and stop only the CI container
+        if: always()
+        run: |
+          mkdir -p .ci-output
+          if docker container inspect sentinel-ci >/dev/null 2>&1; then
+            docker logs sentinel-ci > .ci-output/container.log 2>&1
+            docker rm -f sentinel-ci
+          fi
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: docker-check-results
+          path: .ci-output/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 7

@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "validated_on": "2026-11-17",
+  "base_url": "http://127.0.0.1:8001",
+  "image": "sentinel-ai-api:phase3",
+  "build_completed": true,
+  "compose_configuration_valid": true,
+  "regression_tests_passed": 27,
+  "container_id": "45d5d59e7f950b19ba84f0834e25ea6934b9de8ffef9234ff3a20533ca67d43a",
+  "health": "healthy",
+  "image_id": "sha256:f97ba3894f8fddca21d290166309d15dfcad8e843563457d5267801be9db524d",
+  "image_size_bytes": 742510873,
+  "os": "linux",
+  "architecture": "amd64",
+  "image_user": "sentinel",
+  "data_mount": {
+    "Name": "sentinel-ai_api-data",
+    "Destination": "/app/data",
+    "Type": "volume",
+    "RW": true
+  },
+  "runtime": {
+    "python": "3.13.18",
+    "uid": 10001,
+    "xgboost_cpu": "3.4.1",
+    "database_url": "sqlite:////app/data/sentinel.db"
+  },
+  "http_smoke_report": "reports/phase3_api_smoke.json",
+  "batch_demo_flows_matched_colab": 10,
+  "single_prediction_verified": true,
+  "invalid_batch_wrote_no_history": true,
+  "restart_history_unchanged": true,
+  "container_recreation_history_unchanged": true,
+  "original_container_id": "3936105f21a6da24e04625a2ab17b761504ec80b3bddee1aa3b121ab908ebe6c",
+  "container_id_changed_on_recreation": true,
+  "prediction_count_before_restart": 11,
+  "prediction_count_after_recreation": 11,
+  "alert_count_before_restart": 5,
+  "alert_count_after_recreation": 5,
+  "build_context_note": "Approximately 540 kB reported by Docker; training data and local runtimes excluded.",
+  "history_note": "11 actual historical demo submissions were added to this container's named-volume database. No live attacks, retraining or final test prediction were performed."
+}
