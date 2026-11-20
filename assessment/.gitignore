@@ -1,0 +1,5 @@
+# Keep generated data and candidate artifacts local to this assessment.
+data/
+runs/
+__pycache__/
+.pytest_cache/

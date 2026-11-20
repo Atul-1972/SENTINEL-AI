@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "All added files stay inside assessment/; original tracked files unchanged.",
+  "tests": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "assessment_tests_passed": 15,
+  "real_model_workflow_completed": true,
+  "original_final_test_read": false,
+  "protected_sources_unchanged": true,
+  "candidate_reload_passed": true,
+  "quality_gate_decision": "eligible_for_promotion",
+  "champion_replaced": false,
+  "run_id": "20261120T045241Z-f45ffecc",
+  "no_new_dependencies_required": true
+}

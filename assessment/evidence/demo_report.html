@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SENTINEL assessment execution report</title>
+<style>body{font:16px system-ui;max-width:1000px;margin:40px auto;padding:0 20px;color:#172333}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:12px;border:1px solid #d6dee5;text-align:left}
+h1,h2{color:#164b4e}code{background:#edf3f5;padding:3px}li{margin:8px 0}.box{padding:18px;background:#edf6f4}</style>
+<h1>SENTINEL model monitoring and retraining assessment</h1>
+<p>Run: <code>20261120T045241Z-f45ffecc</code> | Completed: 2026-11-20T04:52:44.638769+00:00</p>
+<p>Historical replay from the original validation capture, previously used for model selection; not newly collected traffic or an independent generalization test.</p>
+<h2>Task A Data validation</h2><p>All input files passed schema, numeric, label and duplicate checks.
+Training: 12,000 rows; incoming batch: 1,000;
+holdout: 3,000. No feature-record overlap across the three inputs.</p>
+<h2>Task B Existing model and Task C Candidate evaluation</h2>
+<div style="overflow:auto"><table><thead><tr><th>Evaluation</th><th>Rows</th><th>Accuracy</th><th>Attack precision</th><th>Attack recall</th><th>Attack F1</th></tr></thead>
+<tbody><tr><th>Champion on incoming batch (before retraining)</th><td>1000</td><td>99.9000%</td><td>100.0000%</td><td>99.8258%</td><td>99.9128%</td></tr><tr><th>Champion on comparison holdout</th><td>3000</td><td>99.9333%</td><td>100.0000%</td><td>99.8838%</td><td>99.9419%</td></tr><tr><th>Candidate on comparison holdout</th><td>3000</td><td>99.9333%</td><td>100.0000%</td><td>99.8838%</td><td>99.9419%</td></tr></tbody></table></div>
+<p>Candidate trained on 13,000 rows, combining original training and the full incoming batch.
+The same preprocessing recipe was cloned and fitted only on that combined training data.</p>
+<h2>Task D Quality gate</h2><p class="box"><strong>eligible_for_promotion</strong>.
+The deployed champion was not replaced.</p><ul><li>attack_recall_at_least_minimum: PASS</li><li>attack_f1_at_least_minimum: PASS</li><li>false_positive_rate_within_limit: PASS</li><li>attack_recall_not_worse_than_champion: PASS</li><li>attack_f1_not_worse_than_champion: PASS</li></ul>
+<p>Missed attacks are costly. F1 and the false-positive limit also control poor precision and excessive alerts.</p>
+<h2>Task E Evidence</h2><p>Candidate: <code>candidate/model.ubj</code> and <code>candidate/preprocessor.joblib</code>.
+See the JSON reports and execution.log alongside this page. Native-model reload check passed;
+protected source checksums match before and after execution.</p>
+<p>MLflow: not used; it is not installed in this project. Run parameters, package versions, input checksums,
+metrics and the decision are recorded locally. No Airflow, DVC or drift-test integration is implied.</p>
+<p>The original final test CSV was not read. Replay results are not independent-day or future-traffic evidence.</p>
+</html>

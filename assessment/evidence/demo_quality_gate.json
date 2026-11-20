@@ -1,0 +1,22 @@
+{
+  "decision": "eligible_for_promotion",
+  "eligible_for_promotion": true,
+  "champion_replaced": false,
+  "criteria": {
+    "min_recall": 0.98,
+    "min_f1": 0.98,
+    "max_false_positive_rate": 0.01
+  },
+  "checks": {
+    "attack_recall_at_least_minimum": true,
+    "attack_f1_at_least_minimum": true,
+    "false_positive_rate_within_limit": true,
+    "attack_recall_not_worse_than_champion": true,
+    "attack_f1_not_worse_than_champion": true
+  },
+  "failed_checks": [],
+  "primary_metric": "attack_recall",
+  "justification": "Missed attacks are costly. F1 and the false-positive limit also control poor precision and excessive alerts.",
+  "comparison_scope": "Both models use the same holdout, excluded from all candidate fitting.",
+  "promotion_policy": "Eligibility is a recorded recommendation. Deployment remains unchanged; manual review is required."
+}
